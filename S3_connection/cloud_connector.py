@@ -24,7 +24,7 @@ class S3_connector:
     # takes the name of the file to be uploaded, bucket name, and key i.e. folder name as input 
     def upload(self,file_name,buk_name,folder_name):
         #construct file path
-        hard_path = r'C:\Clutchgod\S3_connector'
+        hard_path = r'C:\Clutchgod\S3_connector\Input Files'
         file_path = os.path.join(hard_path,file_name)
         print(file_path)
 
@@ -54,13 +54,18 @@ class S3_connector:
                 print(f"Error accessing bucket '{bucket_name}': {e}")
     
     def download(self):
-        pass
-
+        hard_path = r'C:\Clutchgod\S3_connector\downloaded_files'
+        key = 'raw_file.csv'
+        hard_path_final = f"{hard_path}/{key}"
+        s3_client = boto3.client('s3')
+        # lot of grey area, need to add check to every kind of file type like json csv parquet, hardcoded path.
+        s3_client.download_file('medallion-bucket', 'bronze/BigMart Sales.csv', hard_path_final)
 
 
 input_bucket_name = 'input-source-bucket-for-etl'
 fetching_bucket = 'medallion-bucket'
-
-
-
+obj = S3_connector()
+# obj.create_buck_if_not_exists(fetching_bucket)
+# obj.upload('BigMart Sales.csv',fetching_bucket,'bronze')
+obj.download()
 
