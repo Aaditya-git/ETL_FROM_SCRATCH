@@ -52,7 +52,7 @@ class S3_connector:
                 print(f"Bucket '{bucket_name}' exists, but you do not have access to it.")
             else:
                 print(f"Error accessing bucket '{bucket_name}': {e}")
-    
+     
     def download(self):
         hard_path = r'C:\Clutchgod\S3_connector\downloaded_files'
         key = 'raw_file.csv'
