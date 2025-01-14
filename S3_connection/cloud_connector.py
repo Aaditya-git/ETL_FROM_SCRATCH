@@ -32,7 +32,7 @@ class S3_connector:
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"File {file_name} does not exist in {hard_path}")
 
-        #Generating file path
+        #Generating file path 
         folder_to_be_uploaded = folder_name
         key = file_name
         final_name_path = f"{folder_to_be_uploaded}/{key}"
