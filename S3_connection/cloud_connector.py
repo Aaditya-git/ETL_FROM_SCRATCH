@@ -53,6 +53,7 @@ class S3_connector:
             else:
                 print(f"Error accessing bucket '{bucket_name}': {e}")
      
+     
     def download(self):
         hard_path = r'C:\Clutchgod\S3_connector\downloaded_files'
         key = 'raw_file.csv'
@@ -61,6 +62,14 @@ class S3_connector:
         # lot of grey area, need to add check to every kind of file type like json csv parquet, hardcoded path.
         s3_client.download_file('medallion-bucket', 'bronze/BigMart Sales.csv', hard_path_final)
 
+
+    def copy_from_one_bucket_to_another(self,source_bucket,output_bucket)
+        s3 = boto3.resource('s3')
+        copy_source = {
+            'Bucket': source_bucket,
+            'Key': 'mykey'
+        }
+        s3.meta.client.copy(copy_source, output_bucket, 'otherkey')
 
 input_bucket_name = 'input-source-bucket-for-etl'
 fetching_bucket = 'medallion-bucket'
