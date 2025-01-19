@@ -2,7 +2,7 @@ import boto3
 import os 
 
 
-class S3_connector:
+class S3_connector: 
 
     s3_client = boto3.client('s3')
     def create_buck_if_not_exists(self,name):
@@ -62,9 +62,9 @@ class S3_connector:
         hard_path = r'C:\Clutchgod\S3_connector\downloaded_files'
         key = 'raw_file.csv'
         hard_path_final = f"{hard_path}/{key}"
-        s3_client = boto3.client('s3')
+        # s3_client = boto3.client('s3')
         # lot of grey area, need to add check to every kind of file type like json csv parquet, hardcoded path.
-        s3_client.download_file('medallion-bucket', f'bronze/{file_name}', hard_path_final)
+        S3_connector.s3_client.download_file('medallion-bucket', f'bronze/{file_name}', hard_path_final)
 
 
     
@@ -78,6 +78,6 @@ obj = S3_connector()
 # obj.create_buck_if_not_exists(input_bucket_name)
 # obj.upload('BigMart Sales.csv',input_bucket_name)
 # obj.copy_from_one_bucket_to_another(input_bucket_name,fetching_bucket)
-obj.upload('winemag.csv',input_bucket_name)
+# obj.upload('winemag.csv',input_bucket_name)
 # obj.download()
 
