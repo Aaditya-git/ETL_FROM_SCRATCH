@@ -35,3 +35,4 @@ class Spark_cluster:
 if __name__ =="__main__":
     clust = Spark_cluster()
     clust.read_dataframe()
+    # Need to write my logic here

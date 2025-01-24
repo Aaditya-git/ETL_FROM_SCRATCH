@@ -1,5 +1,8 @@
 import boto3
-from S3_connection.cloud_connector import S3_connector, input_bucket_name, fetching_bucket
+# from S3_connection.cloud_connector import S3_connector, input_bucket_name, fetching_bucket
+
+from S3_connection.cloud_connector import S3_connector
+
 
 
 class Extract:
@@ -20,5 +23,5 @@ if __name__ =="__main__":
     # variable 1
     file_name_csv='winemag.csv'
     extract = Extract()
-    extract.copy_from_one_bucket_to_another(input_bucket_name,fetching_bucket,file_name_csv) 
-
+    extract.copy_from_one_bucket_to_another('input-source-bucket-for-etl','',file_name_csv) 
+    # Need to write my logic here

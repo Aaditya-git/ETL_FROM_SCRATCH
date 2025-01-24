@@ -76,8 +76,6 @@ fetching_bucket = 'medallion-bucket'
 obj = S3_connector()
 # obj.create_buck_if_not_exists(fetching_bucket)
 # obj.create_buck_if_not_exists(input_bucket_name)
-# obj.upload('BigMart Sales.csv',input_bucket_name)
-# obj.copy_from_one_bucket_to_another(input_bucket_name,fetching_bucket)
 # obj.upload('winemag.csv',input_bucket_name)
-# obj.download()
 
+obj.download('winemag.csv')
