@@ -74,8 +74,8 @@ input_bucket_name = 'input-source-bucket-for-etl'
 fetching_bucket = 'medallion-bucket'
 
 obj = S3_connector()
-# obj.create_buck_if_not_exists(fetching_bucket)
-# obj.create_buck_if_not_exists(input_bucket_name)
-# obj.upload('winemag.csv',input_bucket_name)
+obj.create_buck_if_not_exists(fetching_bucket)
+obj.create_buck_if_not_exists(input_bucket_name)
+obj.upload('winemag.csv',input_bucket_name)
 
-obj.download('winemag.csv')
+# obj.download('winemag.csv')

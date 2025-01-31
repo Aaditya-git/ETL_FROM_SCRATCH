@@ -21,15 +21,19 @@ class Spark_cluster:
             # Correct the file path for Windows
             file_path = r'C:\Clutchgod\S3_connector\downloaded_files\raw_file.csv'
             # Read the CSV file into a Spark DataFrame
-            df = self.spark.read.format('csv') \
+            bronze_file_df = self.spark.read.format('csv') \
                         .option('inferSchema', True) \
                         .option('header', True) \
                         .load(file_path)
         except Exception as e:
             print(f"Error in read_dataframe: {e}")
 
-    def silver_layer_transformation(self):
+    def silver_layer_transformation(self,filepath):
         #after transformation internal call to save file or upload file to silver folder
+        null_removed_df = self.spark.bronze_file_df.dropdup(filepath)
+
+        self.null_removed_df.withColumn("id",col("id").cast("String"))\
+                  .withColumn("name",col("name").cast("Integer")).printSchema()
         pass
     
 if __name__ =="__main__":
